@@ -14,11 +14,10 @@ goto check_Permissions
     exit
   )
 
-  pause >nul
-
 :loop
   set /p name=What is your name?: 
-  echo I'm %name% and I want to die!
+  set /p hobby=What do you do for a living?: 
+  echo I'm %name% and I %hobby% for a living!
   pause
   cls
-  goto loop
+goto loop

@@ -1,2 +1,2 @@
-# batch-biscuits
-Just for batch stuff for le nostalgia
+# Batch Biscuits
+A collection of batch files to store on because why not

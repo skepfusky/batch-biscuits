@@ -2,11 +2,12 @@
 title  
 ping localhost -n 2 >NUL
 :check_perms
-net session >nul 2>&1
+net session > nul 2 > &1
+
+:: ===================================================== ::
+:: Checks if user runs this script in administrator mode ::
+:: ===================================================== ::
 if %errorLevel% == 0 (
-  echo Success: Administrative permissions - active! Redirecting!
-  ping localhost -n 2 >NUL
-  cls
   goto start
 ) else (
   title Run this file in administrator mode!
@@ -19,6 +20,7 @@ if %errorLevel% == 0 (
   cls
   goto check_perms
 )
+
 :start
 cls
 title Skep's computer fixer thing lol
@@ -45,6 +47,9 @@ if '%choice%'=='6' goto clean_restart
 if '%choice%'=='7' goto flush_restart
 goto start
 
+:: ====================================================== ::
+:: Performs SFC/DISM and cleans temp files, that's it lol ::
+:: ====================================================== ::
 :sfcclean
 echo Executing SFC/DISM and clean temp files...
 ping localhost -n 2 >NUL
@@ -77,12 +82,18 @@ pause
 goto start
 exit
 
+:: ======================================== ::
+:: Flushs the internet, very simple really. ::
+:: ======================================== ::
 :flush
 ipconfig /flushdns
 echo.
 pause
 goto start
 
+:: ======================================================================= ::
+:: Performs SFC and DISM scans, cleans temp files and restart the computer ::
+:: ======================================================================= ::
 :sfcclean_restart
 echo Performing SFC/DISM, clean temp files, and restart computer...
 ping localhost -n 2 >NUL
@@ -98,6 +109,9 @@ echo Operation completed! Your computer will restart in any moment now...
 ping localhost -n 9 >NUL
 shutdown /r /f /t 0
 
+:: ======================================================= ::
+:: Performs SFC and DISM scans, then restarts the computer ::
+:: ======================================================= ::
 :sfc_restart
 echo Performing SFC/DISM and restart computer...
 ping localhost -n 2 >NUL
@@ -110,6 +124,9 @@ echo Operation completed! Your computer will restart in any moment now...
 ping localhost -n 9 >NUL
 shutdown /r /f /t 0
 
+:: ============================================= ::
+:: Cleans temp cache, then restarts the computer ::
+:: ============================================= ::
 :clean_restart
 echo Clean temp files and restart computer...
 ping localhost -n 2 >NUL
@@ -123,6 +140,9 @@ echo Operation completed! Your computer will restart in any moment now...
 ping localhost -n 9 >NUL
 shutdown /r /f /t 0
 
+:: =============================================================== ::
+:: Re-registers DNS and internet stuff, then restarts the computer ::
+:: =============================================================== ::
 :flush_restart
 echo Renew internet (will definitely require restart)
 ping localhost -n 2 >NUL

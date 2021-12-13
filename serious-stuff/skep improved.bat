@@ -1,24 +1,24 @@
 @echo off
 title  
 ping localhost -n 2 >NUL
-@REM :check_perms
-@REM net session >nul 2>&1
-@REM if %errorLevel% == 0 (
-@REM   echo Success: Administrative permissions - active! Redirecting!
-@REM   ping localhost -n 2 >NUL
-@REM   cls
-@REM   goto start
-@REM ) else (
-@REM   title Run this file in administrator mode!
-@REM   echo You need admin privilages to run this batch file!
-@REM   echo Commands will require them and any choices with the option
-@REM   echo to restart your computer will be imminent for 10 seconds.
-@REM   echo.
-@REM   echo Please re-run this batch script with elevated admin privilages.
-@REM   pause >nul
-@REM   cls
-@REM   goto check_perms
-@REM )
+:check_perms
+net session >nul 2>&1
+if %errorLevel% == 0 (
+  echo Success: Administrative permissions - active! Redirecting!
+  ping localhost -n 2 >NUL
+  cls
+  goto start
+) else (
+  title Run this file in administrator mode!
+  echo You need admin privilages to run this batch file!
+  echo Commands will require them and any choices with the option
+  echo to restart your computer will be imminent for 10 seconds.
+  echo.
+  echo Please re-run this batch script with elevated admin privilages.
+  pause >nul
+  cls
+  goto check_perms
+)
 :start
 cls
 title Skep's computer fixer thing lol

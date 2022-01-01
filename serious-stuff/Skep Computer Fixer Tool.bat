@@ -37,7 +37,6 @@ echo  [1;31m[7][0m Refresh internet (will definitely require restart)
 echo.
 set choice=
 set /p choice= Option (1-7): 
-if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto sfcclean
 if '%choice%'=='2' goto clean
 if '%choice%'=='3' goto flush
@@ -45,6 +44,7 @@ if '%choice%'=='4' goto sfcclean_restart
 if '%choice%'=='5' goto sfc_restart
 if '%choice%'=='6' goto clean_restart
 if '%choice%'=='7' goto flush_restart
+if not '%choice%'=='' set choice=%choice:~0,1%
 goto start
 
 :: ====================================================== ::

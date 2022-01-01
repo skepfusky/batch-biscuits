@@ -1,19 +1,21 @@
+Write-Output "Changing some registry to t u r b o l i z e your PC!"
+
 # ============
 # Disables “Shake to Minimize”
 # ============
-
-New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value "1" -PropertyType "DWORD"
+$DWORD = "DWORD" 
+New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value "1" -PropertyType $DWORD
 
 # ============
 # Disable Startup delay
 # ============
 New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name Serialize
-New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize" -Name "StartupDelayInMSec" -Value "0" -PropertyType "DWORD"
+New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Serialize" -Name "StartupDelayInMSec" -Value "0" -PropertyType $DWORD
 
 # ============
 # Verbose Mode
 # ============
-New-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System"  -Name "VerboseMode" -Value "1" -PropertyType "DWORD"
+New-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Policies\System"  -Name "VerboseMode" -Value "1" -PropertyType $DWORD
 
 # ============
 # Lower Shutdown Times
@@ -29,7 +31,7 @@ Set-ItemProperty -path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "WaitToKil
 # Dark Theme (definitely a must)
 # ============
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\" -Name "Personalize"
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "0" -PropertyType "DWORD"
+New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "0" -PropertyType $DWORD
 
 New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\" -Name "Personalize"
-New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "0" -PropertyType "DWORD"
+New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Name "AppsUseLightTheme" -Value "0" -PropertyType $DWORD

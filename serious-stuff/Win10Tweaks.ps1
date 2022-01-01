@@ -2,7 +2,7 @@
 # Disables “Shake to Minimize”
 # ============
 
-# New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value "1" -PropertyType "DWORD"
+New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "DisallowShaking" -Value "1" -PropertyType "DWORD"
 
 # ============
 # Disable Startup delay

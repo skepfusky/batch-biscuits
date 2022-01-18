@@ -1,6 +1,6 @@
 @echo off
 title  
-ping localhost -n 2 >NUL
+@REM ping localhost -n 2 >NUL
 :check_perms
 net session > nul 2 > &1
 

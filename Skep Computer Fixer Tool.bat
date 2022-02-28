@@ -1,8 +1,6 @@
 @echo off
 title  
-@REM ping localhost -n 2 >NUL
 :check_perms
-net session > nul 2 > &1
 
 :: ===================================================== ::
 :: Checks if user runs this script in administrator mode ::
@@ -11,6 +9,7 @@ if %errorLevel% == 0 (
   goto start
 ) else (
   title Run this file in administrator mode!
+  echo.
   echo You need admin privilages to run this batch file!
   echo Commands will require them and any choices with the option
   echo to restart your computer will be imminent for 10 seconds.
@@ -51,9 +50,7 @@ goto start
 :: Performs SFC/DISM and cleans temp files, that's it lol ::
 :: ====================================================== ::
 :sfcclean
-echo Executing SFC/DISM and clean temp files...
-ping localhost -n 2 >NUL
-cls
+echo Executing SFC/DISM and clean temp files..cls
 title SFC/DISM and clean temp files
 sfc /scannow
 DISM /Online /Cleanup-Image /RestoreHealth
@@ -68,9 +65,7 @@ goto start
 exit
 
 :clean
-echo Clean temp files only
-ping localhost -n 2 >NUL
-cls
+echo Clean temp files onlcls
 title Clean temp files only
 rd C:\Windows\Temp /s /q
 rd C:\Users\Skep\AppData\Local\Temp /s /q
@@ -95,9 +90,7 @@ goto start
 :: Performs SFC and DISM scans, cleans temp files and restart the computer ::
 :: ======================================================================= ::
 :sfcclean_restart
-echo Performing SFC/DISM, clean temp files, and restart computer...
-ping localhost -n 2 >NUL
-cls
+echo Performing SFC/DISM, clean temp files, and restart computer..cls
 title SFC/DISM, clean temp files, and restart computer
 sfc /scannow
 DISM /Online /Cleanup-Image /RestoreHealth
@@ -113,9 +106,7 @@ shutdown /r /f /t 0
 :: Performs SFC and DISM scans, then restarts the computer ::
 :: ======================================================= ::
 :sfc_restart
-echo Performing SFC/DISM and restart computer...
-ping localhost -n 2 >NUL
-cls
+echo Performing SFC/DISM and restart computer..cls
 title SFC/DISM and restart computer
 sfc /scannow
 DISM /Online /Cleanup-Image /RestoreHealth
@@ -128,9 +119,7 @@ shutdown /r /f /t 0
 :: Cleans temp cache, then restarts the computer ::
 :: ============================================= ::
 :clean_restart
-echo Clean temp files and restart computer...
-ping localhost -n 2 >NUL
-cls
+echo Clean temp files and restart computer..cls
 title Clean temp files and restart computer
 rd C:\Windows\Temp /s /q
 rd C:\Users\Skep\AppData\Local\Temp /s /q
@@ -144,9 +133,7 @@ shutdown /r /f /t 0
 :: Re-registers DNS and internet stuff, then restarts the computer ::
 :: =============================================================== ::
 :flush_restart
-echo Renew internet (will definitely require restart)
-ping localhost -n 2 >NUL
-cls
+echo Renew internet (will definitely require restartcls
 title Renew internet
 ipconfig /flushdns
 ipconfig /registerdns

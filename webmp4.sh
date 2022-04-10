@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 for webm_f in *.webm
 do
   ffmpeg -i $webm_f\

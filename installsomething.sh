@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if ! command -v handbrake-cli &> /dev/null
 then
@@ -7,7 +7,6 @@ then
   else
   echo 'yes it found it'
 fi
-
 
 # if hash handbrake-cli 2>/dev/null; then
 #     echo "lmao"
